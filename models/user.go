@@ -7,8 +7,8 @@ import (
 
 type User struct {
 	UserID   int64
-	Email    string
-	Password string
+	Email    string `binding:"required"`
+	Password string `binding:"required"`
 }
 
 func (u User) Save() error {
