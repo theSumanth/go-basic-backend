@@ -1,0 +1,7 @@
+PUT http://localhost:8080/events/2
+
+{
+    "name": "Updated Test Event 2",
+    "description": "This is a test event (Updated!) 2",
+    "location": "Manhattan (Updated!) 2"
+}

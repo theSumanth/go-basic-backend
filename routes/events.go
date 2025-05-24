@@ -55,11 +55,42 @@ func createSingleEvent(ctx *gin.Context) {
 		return
 	}
 
-	events, err := models.GetAllEvents()
+	// events, err := models.GetAllEvents()
+	// if err != nil {
+	// 	ctx.JSON(http.StatusInternalServerError, gin.H{"message": "could not fetch rows from db", "error": err})
+	// 	return
+	// }
+
+	ctx.JSON(http.StatusCreated, gin.H{"message": "event created!", "event": event})
+}
+
+func updateEvent(ctx *gin.Context) {
+	var event models.Event
+
+	err := ctx.ShouldBindJSON(&event)
 	if err != nil {
-		ctx.JSON(http.StatusInternalServerError, gin.H{"message": "could not fetch rows from db", "error": err})
+		ctx.JSON(http.StatusBadRequest, gin.H{"message": "could not parse the requst", "error": err})
 		return
 	}
 
-	ctx.JSON(http.StatusCreated, gin.H{"message": "event created!", "events": events})
+	eventId, err := strconv.ParseInt(ctx.Param("id"), 10, 64)
+	if err != nil {
+		ctx.JSON(http.StatusInternalServerError, gin.H{"message": "could not parse the requst", "error": err})
+		return
+	}
+
+	_, err = models.GetEventByID(eventId)
+	if err != nil {
+		ctx.JSON(http.StatusInternalServerError, gin.H{"message": "could not fetch the event", "error": err})
+		return
+	}
+
+	event.ID = eventId
+	err = models.Update(event)
+	if err != nil {
+		ctx.JSON(http.StatusInternalServerError, gin.H{"message": "could not update the event", "error": err})
+		return
+	}
+
+	ctx.JSON(http.StatusOK, gin.H{"message": "updating event successful!", "event": event})
 }
