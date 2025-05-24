@@ -97,7 +97,7 @@ func GetAllEvents() ([]Event, error) {
 	return events, nil
 }
 
-func Update(event Event) error {
+func (event Event) Update() error {
 	query := `
 		UPDATE events
 		SET name = ?, description = ?, location = ?, dateTime = ?

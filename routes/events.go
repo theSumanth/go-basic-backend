@@ -86,7 +86,7 @@ func updateEvent(ctx *gin.Context) {
 	}
 
 	event.ID = eventId
-	err = models.Update(event)
+	err = event.Update()
 	if err != nil {
 		ctx.JSON(http.StatusInternalServerError, gin.H{"message": "could not update the event", "error": err})
 		return
