@@ -1,6 +1,8 @@
 package models
 
 import (
+	"errors"
+
 	"example.com/go-basic-backend/db"
 	"example.com/go-basic-backend/utils"
 )
@@ -32,6 +34,25 @@ func (u User) Save() error {
 	_, err = stmt.Exec(u.Email, hashedPassword)
 	if err != nil {
 		return err
+	}
+
+	return nil
+}
+
+func (u User) ValidateCredentials() error {
+	query := "SELECT id, password FROM users where email = ?"
+
+	row := db.DB.QueryRow(query, u.Email)
+
+	var retreivedPassword string
+	err := row.Scan(&u.UserID, &retreivedPassword)
+	if err != nil {
+		return errors.New("invalid credentials")
+	}
+
+	isCorrectPassword := utils.CompareHashPassword(u.Password, retreivedPassword)
+	if !isCorrectPassword {
+		return errors.New("invalid credentials")
 	}
 
 	return nil
