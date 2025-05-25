@@ -1,9 +1,10 @@
 POST http://localhost:8080/events
 Content-Type: application/json
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3QyQGdtYWlsLmNvbSIsImV4cCI6MTc0ODE3NDMyMywidXNlcklkIjoxfQ.A7jGEECaXc0f_akxfS7yRR5uMeypXthe3g7_S8bya3s
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3QyQGdtYWlsLmNvbSIsImV4cCI6MTc0ODE3OTAyNCwidXNlcklkIjoyfQ.XuXV9a3wHYhKd6GQBpreKO40Ci6CEbbIeVhBPF7vXMM
+# Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3RAZ21haWwuY29tIiwiZXhwIjoxNzQ4MTc4OTQyLCJ1c2VySWQiOjF9.5XVxPxmGhuTK0573nxODJs0ptPJxVpnQhnFa1g6Lfb0
 
 {
-    "name": "Test Event 1 for different user",
-    "description": "This is a test event 1",
-    "location": "Manhattan 1"
+    "name": "Test Event 2",
+    "description": "This is a test event 2",
+    "location": "Manhattan 2"
 }
