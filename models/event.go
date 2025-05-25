@@ -120,9 +120,53 @@ func (event Event) Delete() error {
 	defer stmt.Close()
 
 	_, err = stmt.Exec(event.ID)
+
+	return err
+}
+
+func (event Event) IsUserRegistered(userId int64) bool {
+	query := "SELECT user_id, event_id FROM registrations WHERE user_id = ? AND event_id = ?"
+
+	row := db.DB.QueryRow(query, userId, event.ID)
+
+	var fetchedUserId, fetchedEventId int64
+	err := row.Scan(&fetchedUserId, &fetchedEventId)
+
+	return err == nil
+}
+
+func (event Event) Register(userId int64) error {
+	query := `
+		INSERT INTO registrations(user_id, event_id)
+		VALUES (?, ?)
+	`
+
+	stmt, err := db.DB.Prepare(query)
+	if err != nil {
+		return err
+	}
+
+	defer stmt.Close()
+
+	_, err = stmt.Exec(userId, event.ID)
 	if err != nil {
 		return err
 	}
 
 	return nil
+}
+
+func (event Event) CancelRegister(userId int64) error {
+	query := "DELETE FROM registrations WHERE user_id = ? AND event_id = ?"
+
+	stmt, err := db.DB.Prepare(query)
+	if err != nil {
+		return err
+	}
+
+	defer stmt.Close()
+
+	_, err = stmt.Exec(userId, event.ID)
+
+	return err
 }

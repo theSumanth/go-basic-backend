@@ -1,10 +1,15 @@
 POST http://localhost:8080/events
 Content-Type: application/json
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3QyQGdtYWlsLmNvbSIsImV4cCI6MTc0ODE3OTAyNCwidXNlcklkIjoyfQ.XuXV9a3wHYhKd6GQBpreKO40Ci6CEbbIeVhBPF7vXMM
-# Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3RAZ21haWwuY29tIiwiZXhwIjoxNzQ4MTc4OTQyLCJ1c2VySWQiOjF9.5XVxPxmGhuTK0573nxODJs0ptPJxVpnQhnFa1g6Lfb0
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3QyQGdtYWlsLmNvbSIsImV4cCI6MTc0ODE4NzM1MiwidXNlcklkIjoyfQ.LMNE-fJ2OQend0tLQU7qof9NpPL4xXqcnv2DNPGSVJw
 
 {
-    "name": "Test Event 2",
-    "description": "This is a test event 2",
-    "location": "Manhattan 2"
+    "name": "Another Test Event",
+    "description": "This is a test event",
+    "location": "Manhattan"
 }
+
+# {
+#     "name": "Another Test Event",
+#     "description": "This is a another test event",
+#     "location": "Texax"
+# }

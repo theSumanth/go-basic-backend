@@ -1,8 +1,8 @@
-PUT http://localhost:8080/events/2
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3QyQGdtYWlsLmNvbSIsImV4cCI6MTc0ODE3OTAyNCwidXNlcklkIjoyfQ.XuXV9a3wHYhKd6GQBpreKO40Ci6CEbbIeVhBPF7vXMM
+PUT http://localhost:8080/events/4
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3QyQGdtYWlsLmNvbSIsImV4cCI6MTc0ODE4NzM1MiwidXNlcklkIjoyfQ.LMNE-fJ2OQend0tLQU7qof9NpPL4xXqcnv2DNPGSVJw
 
 {
-    "name": "Updated Test Event Name 2!!!",
-    "description": "This is a test event 2 (Updated!)",
-    "location": "Manhattan 2 (Updated!)"
+    "name": "Another Updated Test Event!!!",
+    "description": "This is a test event(Updated!)",
+    "location": "Manhattan (Updated!)"
 }

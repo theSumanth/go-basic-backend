@@ -136,7 +136,7 @@ func deleteEvent(ctx *gin.Context) {
 		return
 	}
 
-	if event.ID != userId {
+	if event.UserID != userId {
 		ctx.JSON(http.StatusUnauthorized, gin.H{"message": "not authorized to delete event"})
 		return
 	}

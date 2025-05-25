@@ -1,0 +1,2 @@
+POST http://localhost:8080/events/1/cancel-register
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3QyQGdtYWlsLmNvbSIsImV4cCI6MTc0ODE4NzM1MiwidXNlcklkIjoyfQ.LMNE-fJ2OQend0tLQU7qof9NpPL4xXqcnv2DNPGSVJw
