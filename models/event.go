@@ -1,9 +1,7 @@
 package models
 
 import (
-	"crypto/rand"
 	"fmt"
-	"math/big"
 	"time"
 
 	"example.com/go-basic-backend/db"
@@ -15,7 +13,7 @@ type Event struct {
 	Description string `binding:"required"`
 	Location    string `binding:"required"`
 	DateTime    time.Time
-	UserID      int
+	UserID      int64
 }
 
 func (e *Event) Save() error {
@@ -30,14 +28,6 @@ func (e *Event) Save() error {
 	}
 
 	defer stmt.Close()
-
-	e.DateTime = time.Now()
-	userID, err := rand.Int(rand.Reader, big.NewInt(10000))
-	if err != nil {
-		return err
-	}
-
-	e.UserID = int(userID.Int64()) + 1
 
 	result, err := stmt.Exec(e.Name, e.Description, e.Location, e.DateTime, e.UserID)
 	if err != nil {
