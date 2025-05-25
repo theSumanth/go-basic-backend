@@ -3,7 +3,6 @@ package routes
 import (
 	"net/http"
 	"strconv"
-	"time"
 
 	"example.com/go-basic-backend/models"
 	"github.com/gin-gonic/gin"
@@ -53,7 +52,6 @@ func createSingleEvent(ctx *gin.Context) {
 	}
 
 	event.UserID = userId
-	event.DateTime = time.Now()
 
 	err = event.Save()
 

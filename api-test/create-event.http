@@ -5,11 +5,6 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3QyQGdtYWls
 {
     "name": "Another Test Event",
     "description": "This is a test event",
-    "location": "Manhattan"
+    "location": "Manhattan",
+    "datetime": "2025-05-25T19:01:43.6688243+05:30"
 }
-
-# {
-#     "name": "Another Test Event",
-#     "description": "This is a another test event",
-#     "location": "Texax"
-# }
