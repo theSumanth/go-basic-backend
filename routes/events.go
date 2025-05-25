@@ -53,7 +53,7 @@ func createSingleEvent(ctx *gin.Context) {
 
 	err = ctx.ShouldBindJSON(&event)
 	if err != nil {
-		ctx.JSON(http.StatusBadRequest, gin.H{"message": "could not parse the request", "error": err})
+		ctx.JSON(http.StatusBadRequest, gin.H{"message": "could not parse the request", "error": err.Error()})
 		return
 	}
 
