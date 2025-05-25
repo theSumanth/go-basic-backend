@@ -6,7 +6,6 @@ import (
 	"time"
 
 	"example.com/go-basic-backend/models"
-	"example.com/go-basic-backend/utils"
 	"github.com/gin-gonic/gin"
 )
 
@@ -37,27 +36,17 @@ func getSingleEvent(ctx *gin.Context) {
 }
 
 func createSingleEvent(ctx *gin.Context) {
-	token := ctx.Request.Header.Get("Authorization")
-	if token == "" {
-		ctx.JSON(http.StatusUnauthorized, gin.H{"message": "could not authorize"})
-		return
-	}
-
-	userMap, err := utils.VerifyToken(token)
-	if err != nil {
-		ctx.JSON(http.StatusUnauthorized, gin.H{"message": "could not authorize", "error": err.Error()})
-		return
-	}
+	userDetailsMap := ctx.GetStringMap("userDetailsMap")
 
 	var event models.Event
 
-	err = ctx.ShouldBindJSON(&event)
+	err := ctx.ShouldBindJSON(&event)
 	if err != nil {
 		ctx.JSON(http.StatusBadRequest, gin.H{"message": "could not parse the request", "error": err.Error()})
 		return
 	}
 
-	userId, ok := userMap["userId"].(int64)
+	userId, ok := userDetailsMap["userId"].(int64)
 	if !ok {
 		ctx.JSON(http.StatusInternalServerError, gin.H{"message": "invalid user id in token"})
 		return
